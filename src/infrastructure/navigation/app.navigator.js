@@ -8,6 +8,8 @@ import { SafeArea } from '../../components/utility/safeArea.component'
 import { RestaurantsNavigator } from './restaurants.navigation';
 import { Ionicons } from '@expo/vector-icons'; 
 
+import { MapScreen } from '../../features/map/screens/map.screen';
+
 const TAB_ICON = {
     Restaurants: 'md-restaurant',
     Map: 'md-map',
@@ -19,7 +21,8 @@ const TAB_ICON = {
     return {
       tabBarIcon: ({size , color}) => (
          <Ionicons name={iconName} size={size} color={color} />
-         )
+         ),
+      headerShown: false   
     }
   }
   
@@ -27,14 +30,7 @@ const TAB_ICON = {
   
   const Tab = createBottomTabNavigator()
 
-const MapScreen = () => {
-    return (
-      <SafeArea style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Map!</Text>
-      </SafeArea>
-    )
-  }
-  
+
   const SettingScreen = () => {
     return (
       <SafeArea style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -48,7 +44,6 @@ export const AppNavigator = () => {
         <NavigationContainer>
        <Tab.Navigator
        screenOptions={createScreenOptions}
-       options={{headerShown:false}}
        tabBarOptions={{ 
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',}}
