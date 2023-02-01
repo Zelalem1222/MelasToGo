@@ -1,15 +1,14 @@
+import React from "react"
 
-import styled from "styled-components/native"
 
-import { Image, Text} from 'react-native'
+import { CompactRestaurantInfo } from "../../../components/restaurant/compact-restaurant-info.component"
 
-const MyText = styled.Text``
+
 
 export const MapCallout = ({ restaurant }) => {
     return (
-        <>
-        <Image source={{ uri: restaurant.photos[0] }} />
-        <MyText>{restaurant.name}</MyText>
-        </>
+       <CompactRestaurantInfo 
+        restaurant={restaurant}
+       />
     )
 }
