@@ -9,7 +9,7 @@ const SearchContainer = styled.View`
     margin-top: ${props => props.theme.space[3]}
 `
 
-export const Search = () => {
+export const Search = ({ isFavouritesToggle , onFavouritesToggle }) => {
     const { keyword , search } = useContext(LocationContext)
     const [searchKeyword , setSearchKeyword] = useState(keyword)
     useEffect(() => {
@@ -18,6 +18,8 @@ export const Search = () => {
     return (
         <SearchContainer >
         <Searchbar 
+        icon={isFavouritesToggle ? 'heart' : 'heart-outline'}
+        onIconPress={onFavouritesToggle}
         placeholder='Search for a location' 
         value={searchKeyword}
         onSubmitEditing={() => {
