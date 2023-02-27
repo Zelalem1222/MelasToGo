@@ -5,7 +5,7 @@ import { CompactRestaurantInfo } from '../restaurant/compact-restaurant-info.com
 import { Spacer } from '../spacer/spacer.component'
 import { Text } from '../typography/typography.component'
 
-const FavouritesWrapper = styled.View`
+const FavouritesWrapper =  styled.View`
     padding: 10px;
 `
 
