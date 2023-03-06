@@ -58,7 +58,7 @@ export const RestaurantDetailScreen = ({route }) => {
         <List.Item title='Tea' />
         <List.Item title='Modelo' />
         <List.Item title='Coke' />
-        <List.Item title='Fanta' />
+        <List.Item title='Fantaaaa' />
       </List.Accordion>
       </ScrollView>
        </SafeArea>
