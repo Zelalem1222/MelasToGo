@@ -28,7 +28,7 @@ const firebaseConfig = {
 // if(!firebase.apps.)
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app)
+const auth = getAuth()
 
 
 export default function App() {
@@ -55,7 +55,7 @@ export default function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
-      {/* <AuthenticationContextProvider> */}
+      <AuthenticationContextProvider>
       <FavouriteContextProvider>
       <LocationContextProvider>
       <RestaurantsContextProvider>
@@ -63,7 +63,7 @@ export default function App() {
     </RestaurantsContextProvider>
     </LocationContextProvider>
     </FavouriteContextProvider>
-    {/* </AuthenticationContextProvider> */}
+    </AuthenticationContextProvider>
     </ThemeProvider>
     </>
   );
