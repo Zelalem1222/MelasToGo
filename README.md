@@ -6,7 +6,7 @@ This app is made for to show restaurants for a user and select the best that wor
 ## Built With
 
 - Programming Languages: HTML, CSS, JavaScript.
-- Frameworks: React and Bootstrap.
+- Frameworks: React-Native and Bootstrap.
 - Code Editor: VS Code.
 - Technologies: Git, Gitflow, Linters, Github
 
