@@ -41,7 +41,6 @@ const TAB_ICON = {
 
 export const AppNavigator = () => {
     return (
-        <NavigationContainer>
        <Tab.Navigator
        screenOptions={createScreenOptions}
        tabBarOptions={{ 
@@ -52,6 +51,5 @@ export const AppNavigator = () => {
          <Tab.Screen name='Map' component={MapScreen} />
          <Tab.Screen name="Settings" component={SettingScreen} />
        </Tab.Navigator>
-    </NavigationContainer>
     )
 }
