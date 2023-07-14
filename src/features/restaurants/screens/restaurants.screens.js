@@ -30,7 +30,6 @@ const LoadingContainer = styled.View`
    left: 50%
 `
 
-
 export const RestaurantsScreen = ({ navigation }) => {
   const {restaurants , isLoading , error} = useContext(RestaurantsContext)
  const [isToggled , setIsToggled] = useState(false)
