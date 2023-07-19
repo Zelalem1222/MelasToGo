@@ -27,7 +27,6 @@ const TAB_ICON = {
   }
   
   
-  
   const Tab = createBottomTabNavigator()
 
 
