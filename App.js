@@ -12,20 +12,34 @@ import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 
 import { theme } from './src/infrastructure/theme';
 import { Navigation } from './src/infrastructure/navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './src/Login';
 
 
+const Stack = createStackNavigator();
 
 export default function App() {
 
-  const [oswaldLoaded] = useOswald({ Oswald_400Regular });
-  const [ latoLoaded ] = useLato({Lato_400Regular })
+  // const [oswaldLoaded] = useOswald({ Oswald_400Regular });
+  // const [ latoLoaded ] = useLato({Lato_400Regular })
   
-  if(!oswaldLoaded && !latoLoaded){
-    return null
-  }
+  // if(!oswaldLoaded && !latoLoaded){
+  //   return null
+  // }
+  
 
   return (
-    <>
+    <NavigationContainer>
+       <Stack.Navigator initialRouteName="Loading">
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+  );
+}
+
+
+{/* <>
     <ThemeProvider theme={theme}>
       <FavouriteContextProvider>
       <LocationContextProvider>
@@ -35,7 +49,4 @@ export default function App() {
     </LocationContextProvider>
     </FavouriteContextProvider>
     </ThemeProvider>
-    </>
-  );
-}
-
+    </> */}
