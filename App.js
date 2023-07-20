@@ -21,25 +21,16 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
-  // const [oswaldLoaded] = useOswald({ Oswald_400Regular });
-  // const [ latoLoaded ] = useLato({Lato_400Regular })
+  const [oswaldLoaded] = useOswald({ Oswald_400Regular });
+  const [ latoLoaded ] = useLato({Lato_400Regular })
   
-  // if(!oswaldLoaded && !latoLoaded){
-  //   return null
-  // }
+  if(!oswaldLoaded && !latoLoaded){
+    return null
+  }
   
 
   return (
-    <NavigationContainer>
-       <Stack.Navigator initialRouteName="Loading">
-        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/>
-        </Stack.Navigator>
-      </NavigationContainer>
-  );
-}
-
-
-{/* <>
+    <>
     <ThemeProvider theme={theme}>
       <FavouriteContextProvider>
       <LocationContextProvider>
@@ -49,4 +40,15 @@ export default function App() {
     </LocationContextProvider>
     </FavouriteContextProvider>
     </ThemeProvider>
-    </> */}
+    </> 
+  );
+}
+
+
+
+
+    // <NavigationContainer>
+    //    <Stack.Navigator initialRouteName="Loading">
+    //     <Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/>
+    //     </Stack.Navigator>
+    //   </NavigationContainer>
