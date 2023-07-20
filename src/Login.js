@@ -17,7 +17,7 @@ export default function Login() {
             const response = await signInWithEmailAndPassword(auth , email , password);
             console.log(response)
           } catch(error) {
-            alert("Sign In failed" + error.message);
+            alert("Sign In failed " + error.message);
             console.log(error)
           } finally {
             setLoading(false)
@@ -28,11 +28,11 @@ export default function Login() {
         setLoading(true);
         try {
           const response = await createUserWithEmailAndPassword(auth , email , password);
-          alert("Check your email" + error.message);
+          alert("Check your email " + error.message);
           console.log(response)
         } catch(error) {
            console.log(error);
-           alert("Sign In failed" + error.message);
+           alert("Sign In faile " + error.message);
         } finally {
           setLoading(false)
         }
