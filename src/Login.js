@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { StyleSheet , View , Text, TextInput, ActivityIndicator, Button, Alert } from "react-native";
+import { StyleSheet , View , TextInput, ActivityIndicator, Button } from "react-native";
 import { FIREBASE_AUTH } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -28,11 +28,11 @@ export default function Login() {
         setLoading(true);
         try {
           const response = await createUserWithEmailAndPassword(auth , email , password);
-          alert("Check your email " + error.message);
+          alert("Check your email");
           console.log(response)
         } catch(error) {
            console.log(error);
-           alert("Sign In faile " + error.message);
+           alert("Sign In failed " + error.message);
         } finally {
           setLoading(false)
         }
