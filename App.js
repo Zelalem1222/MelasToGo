@@ -48,7 +48,7 @@ export default function App() {
   
   useEffect(() => {
     // const user = firebase.auth().currentUser;
-    firebase.auth().onAuthStateChanged( (user) => {
+      onAuthStateChanged(FIREBASE_AUTH, (user) => {
       console.log('user', user)
       setUser(user)
     })
