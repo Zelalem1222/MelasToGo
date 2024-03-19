@@ -26,6 +26,8 @@ import { User, onAuthStateChanged } from 'firebase/auth';
 const Stack = createStackNavigator();
 const InsideStack = createStackNavigator();
 
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 function InsideLayout() {
   return (
     <InsideStack.Navigator>
@@ -35,39 +37,48 @@ function InsideLayout() {
       </InsideStack.Navigator>
   )}
 export default function App() {
-
-  // const [oswaldLoaded] = useOswald({ Oswald_400Regular });
-  // const [ latoLoaded ] = useLato({Lato_400Regular })
-  
-  // if(!oswaldLoaded && !latoLoaded){
-  //   return null
-  // }
- 
-
-  const [user , setUser] = useState(null)
-  
+  const auth = FIREBASE_AUTH;
+  const [isAuthenticated , setIsAuthenticated] = useState(false)
   useEffect(() => {
-    // const user = firebase.auth().currentUser;
-      onAuthStateChanged(FIREBASE_AUTH, (user) => {
-      console.log('user', user)
-      setUser(user)
+    setTimeout(() => {signInWithEmailAndPassword(auth , 'email12@gmail.com' , 'email123').then((user) => {
+       console.log(user);
+       setIsAuthenticated(true); 
     })
+    .catch((e) => {
+      console.log(e)
+    })
+  } , 2000)
   }, [])
 
+  const [oswaldLoaded] = useOswald({ Oswald_400Regular });
+  const [ latoLoaded ] = useLato({Lato_400Regular })
+  
+  if(!oswaldLoaded && !latoLoaded){
+    return null
+  }
+  
+  if(!isAuthenticated) return null;
+
+  
+
+  
+
+
+
+  // const [user , setUser] = useState(null)
+  
+  // useEffect(() => {
+  //   // const user = firebase.auth().currentUser;
+  //     onAuthStateChanged(FIREBASE_AUTH, (user) => {
+  //     // console.log('user', user)
+  //     setUser(user)
+  //   })
+  // }, [])
+
+
+
   return (
-    <NavigationContainer>
-       <Stack.Navigator initialRouteName="Loading">
-        { user ? (<Stack.Screen name='Inside' component={InsideLayout} options={{ headerShown: false }}/> ) :
-         (<Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/> )
-        }
-       
-        </Stack.Navigator>
-      </NavigationContainer>
-  );
-}
-
-
-{/* <>
+     <>
     <ThemeProvider theme={theme}>
       <FavouriteContextProvider>
       <LocationContextProvider>
@@ -77,4 +88,16 @@ export default function App() {
     </LocationContextProvider>
     </FavouriteContextProvider>
     </ThemeProvider>
-    </> */}
+    </> 
+  //   <NavigationContainer>
+  //   <Stack.Navigator initialRouteName="Loading">
+  //    { user ? (<Stack.Screen name='Inside' component={InsideLayout} options={{ headerShown: false }}/> ) :
+  //     (<Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/> )
+  //    }
+    
+  //    </Stack.Navigator>
+  //  </NavigationContainer>
+  );
+}
+
+
