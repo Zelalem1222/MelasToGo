@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components/native';
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context';
 import { LocationContextProvider } from './src/services/locations/location.context';
 import { FavouriteContextProvider } from './src/services/favourites/favourites.context';
-
+import { AuthenticationContextProvider } from './src/services/authentication/authentication.context';
 
 import { useFonts as useOswald, Oswald_400Regular } from '@expo-google-fonts/oswald';
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
@@ -28,6 +28,7 @@ const InsideStack = createStackNavigator();
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
+
 function InsideLayout() {
   return (
     <InsideStack.Navigator>
@@ -37,18 +38,18 @@ function InsideLayout() {
       </InsideStack.Navigator>
   )}
 export default function App() {
-  const auth = FIREBASE_AUTH;
-  const [isAuthenticated , setIsAuthenticated] = useState(false)
-  useEffect(() => {
-    setTimeout(() => {signInWithEmailAndPassword(auth , 'email12@gmail.com' , 'email123').then((user) => {
-       console.log(user);
-       setIsAuthenticated(true); 
-    })
-    .catch((e) => {
-      console.log(e)
-    })
-  } , 2000)
-  }, [])
+  // const auth = FIREBASE_AUTH;
+  // const [isAuthenticated , setIsAuthenticated] = useState(false)
+  // useEffect(() => {
+  //   setTimeout(() => {signInWithEmailAndPassword(auth , 'email12@gmail.com' , 'email123').then((user) => {
+  //      console.log(user);
+  //      setIsAuthenticated(true); 
+  //   })
+  //   .catch((e) => {
+  //     console.log(e)
+  //   })
+  // } , 2000)
+  // }, [])
 
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
   const [ latoLoaded ] = useLato({Lato_400Regular })
@@ -57,13 +58,9 @@ export default function App() {
     return null
   }
   
-  if(!isAuthenticated) return null;
+  // if(!isAuthenticated) return null;
 
   
-
-  
-
-
 
   // const [user , setUser] = useState(null)
   
@@ -75,11 +72,10 @@ export default function App() {
   //   })
   // }, [])
 
-
-
   return (
      <>
     <ThemeProvider theme={theme}>
+      <AuthenticationContextProvider>
       <FavouriteContextProvider>
       <LocationContextProvider>
       <RestaurantsContextProvider>
@@ -87,6 +83,7 @@ export default function App() {
     </RestaurantsContextProvider>
     </LocationContextProvider>
     </FavouriteContextProvider>
+    </AuthenticationContextProvider>
     </ThemeProvider>
     </> 
   //   <NavigationContainer>
