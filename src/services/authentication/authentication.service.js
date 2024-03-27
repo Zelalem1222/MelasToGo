@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import { FIREBASE_AUTH } from '../../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
