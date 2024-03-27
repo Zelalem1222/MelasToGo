@@ -11,10 +11,12 @@ export const AuthenticationContextProvider = ({ children }) => {
 
         const onLogin = (email , password) => {
             setIsLoading(true);
-            loginRequest(email , password).then((u) => {
+            loginRequest(email , password)
+            .then((u) => {
                 setUser(u)
                 setIsLoading(false)
-            }).catch((e) => {
+            })
+            .catch((e) => {
                 setIsLoading(false)
                 setError(e)
             })
