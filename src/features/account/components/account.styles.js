@@ -29,5 +29,6 @@ export const AccountContainer = styled.View`
 export const AuthButton = styled(Button).attrs({
         buttonColor: colors.brand.primary,
 })`
-   padding: ${(props) => props.theme.space[2]}
+   padding: ${(props) => props.theme.space[2]};
+   margin-bottom: ${(props) => props.theme.space[2]};
 `;
