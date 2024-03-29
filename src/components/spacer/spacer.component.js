@@ -9,7 +9,7 @@ const sizeVarients = {
 
 const positionVarient = {
     top: 'marginTop',
-    left: 'margin-left',
+    left: 'marginLeft',
     right: 'marginRight',
     bottom: 'marginBottom'
 }
