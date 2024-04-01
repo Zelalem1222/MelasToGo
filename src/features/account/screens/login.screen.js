@@ -1,5 +1,5 @@
 import React , { useState , useContext } from "react";
-import { AccountBackground , AccountCover , AccountContainer , AuthButton , AuthInput  } from "../components/account.styles";
+import { AccountBackground , AccountCover , AccountContainer , AuthButton , AuthInput, Title, ErrorContainer  } from "../components/account.styles";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/typography.component";
@@ -7,7 +7,7 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 
 
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
     const [email , setEmail] = useState("");
     const [password , setPassword] = useState("");
     const { onLogin , error } = useContext(AuthenticationContext);
@@ -15,6 +15,7 @@ export const LoginScreen = () => {
     return (
         <AccountBackground>
             <AccountCover />
+            <Title>Meals To Go</Title>
             <AccountContainer>
                 <Spacer size="large">
                 <AuthInput 
@@ -37,15 +38,20 @@ export const LoginScreen = () => {
                 onChangeText={(p) => setPassword(p)}
                 />
                 </Spacer>
-               { error && <Spacer size="large" position="top">
+               { error && <ErrorContainer>
                 <Text variant="error">{error}</Text>
-                </Spacer>}
+                </ErrorContainer>}
                 <Spacer size="large" position="top">
             <AuthButton icon="lock-open-outline" mode="contained" onPress={() => onLogin(email , password)}>
              Login
         </AuthButton>
         </Spacer>
             </AccountContainer>
+            <Spacer size="large" position="top">
+                <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+                    Back
+                </AuthButton>
+            </Spacer>
         </AccountBackground>
     )
 }
