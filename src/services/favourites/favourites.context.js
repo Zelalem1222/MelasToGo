@@ -9,7 +9,6 @@ export const FavouriteContextProvider = ({ children }) => {
   const [favourites , setFavourites] = useState([])
 
   const saveFavourites = async (value, uid) => {
-    console.log(uid)
     try {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favourites-${uid}`, jsonValue);
@@ -38,7 +37,6 @@ export const FavouriteContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (user && user.uid && favourites.length) {
-      console.log(user)
       saveFavourites(favourites, user.uid);
     }
   }, [favourites, user]);
