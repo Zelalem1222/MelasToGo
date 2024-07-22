@@ -1,8 +1,9 @@
 import React from 'react'
-import { Text } from 'react-native'
+
 import { createStackNavigator , TransitionPresets } from "@react-navigation/stack"
 import { RestaurantsScreen } from '../../features/restaurants/screens/restaurants.screens';
 import { RestaurantDetailScreen } from '../../features/restaurants/screens/restaurantDetail.screen';
+
 const ReastaurantStack = createStackNavigator()
 
 export const RestaurantsNavigator = () => {
