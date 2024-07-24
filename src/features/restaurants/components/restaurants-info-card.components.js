@@ -1,10 +1,8 @@
 import React from "react";
 import { SvgXml } from "react-native-svg";
 
-import { Image } from "react-native";
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { Text } from '../../../components/typography/typography.component'
-
 import { Favourite } from "../../../components/favourite/favourite.components";
 
 import star from '../../../../assets/star'
