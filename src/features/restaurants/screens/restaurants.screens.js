@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import {  ActivityIndicator , MD2Colors } from 'react-native-paper'
 import { TouchableOpacity  } from 'react-native';
 
+import { FadeInView } from '../../../components/animations/fade.animations';
 import { SafeArea } from '../../../components/utility/safeArea.component';
 import { RestaurantInfoCard } from '../components/restaurants-info-card.components';
 import { Spacer } from '../../../components/spacer/spacer.component';
@@ -40,6 +41,7 @@ export const RestaurantsScreen = ({ navigation }) => {
       </LoadingContainer>}
       <Search isFavouritesToggle={isToggled} onFavouritesToggle={() => setIsToggled(!isToggled)} />
       {isToggled && <FavouritesBar favourites={favourites} onNavigate={navigation.navigate}/>}
+      
       <RestaurantList 
        data={restaurants}
        renderItem={({ item }) =>{
@@ -47,7 +49,9 @@ export const RestaurantsScreen = ({ navigation }) => {
         <>
         <TouchableOpacity onPress={() => navigation.navigate('ReastaurantDetail' , { restaurant: item }) }>
         <Spacer position='bottom' size='large'>
+        <FadeInView>
        <RestaurantInfoCard restaurant={item}/>
+       </FadeInView>
        </Spacer>
        </TouchableOpacity> 
        </>
@@ -56,7 +60,7 @@ export const RestaurantsScreen = ({ navigation }) => {
        keyExtractor={(item ) => item.name}
       />
         
-
+        
     </SafeArea>
   )
 }
