@@ -24,6 +24,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.zola1212.MealsToGo"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "776cd4bd-35cf-4924-a218-7dab85680370"
       }
     }
   }
