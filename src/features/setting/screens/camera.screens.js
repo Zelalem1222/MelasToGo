@@ -1,43 +1,64 @@
-import React, { useState, useRef , useEffect } from 'react';
+import React, { useState, useRef , useEffect , useContext } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import styled from 'styled-components/native';
 import { Camera  , CameraType} from "expo-camera";
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity , View } from 'react-native';
+import { Text } from "../../../components/typography/typography.component"
 
+
+import { AuthenticationContext } from '../../../services/authentication/authentication.context';
 
 const ProfileCamera = styled(Camera)`
   width: 100%;
   height: 100%;
+  flex:1;
 `
 
-export const CameraScreen = () => {
-    const [hasPermisson, setHasPermisson ] = useState(null);
-    const cameraRef = useRef();
+const InnerSnap = styled.View`
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+`
 
+export const CameraScreen = ({navigation}) => {
+    const [hasPermission, setHasPermission ] = useState(null);
+    const cameraRef = useRef();
+    const { user } = useContext(AuthenticationContext)
 
     const snap = async () => {
     if (cameraRef) {
       const photo = await cameraRef.current.takePictureAsync();
-      console.log(photo);
+      AsyncStorage.setItem(`${user.uid}-photo` , photo.uri)
+      navigation.goBack();
     }
   };
 
     useEffect(() => {
         (async () => {
             const { status} = await Camera.requestCameraPermissionsAsync();
-            setHasPermisson(status === 'granted');
+            setHasPermission(status === 'granted');
         })() 
     }, [])
 
-    
+    if (hasPermission === null) {
+      return <View />;
+    }
+    if (hasPermission === false) {
+      return <Text>No access to camera</Text>;
+    }
 
     return (
-        <TouchableOpacity onPress={snap}>
+        
         <ProfileCamera
           ref={(camera) => (cameraRef.current = camera)}
           type={CameraType.front}
           ratio={"16:9"}
-         />
+         >
+          <TouchableOpacity onPress={snap}>
+         <InnerSnap />
          </TouchableOpacity>
+         </ProfileCamera>
     )
 }
 
