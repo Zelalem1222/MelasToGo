@@ -9,6 +9,10 @@ const SearchContainer = styled.View`
     margin-top: ${props => props.theme.space[3]}
 `
 
+const SearchBar = styled(Searchbar)`
+      background-color : ${props => props.theme.colors.ui.quaternary}
+ `
+
 export const Search = ({ isFavouritesToggle , onFavouritesToggle }) => {
     const { keyword , search } = useContext(LocationContext)
     const [searchKeyword , setSearchKeyword] = useState(keyword)
@@ -17,7 +21,7 @@ export const Search = ({ isFavouritesToggle , onFavouritesToggle }) => {
     } , [keyword])
     return (
         <SearchContainer >
-        <Searchbar 
+        <SearchBar 
         icon={isFavouritesToggle ? 'heart' : 'heart-outline'}
         onIconPress={onFavouritesToggle}
         placeholder='Search for a location' 
