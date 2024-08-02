@@ -9,6 +9,9 @@ font-size: ${props => props.theme.fontSizes.caption}
 
 export const RestaurantCard = styled(Card)`
   background-color : ${props => props.theme.colors.ui.quaternary}
+  width: 95%
+  align-self: center
+ 
 `
 
 export const RestaurantCardCover = styled(Card.Cover)`
