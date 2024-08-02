@@ -17,8 +17,7 @@ export const RestaurantsContextProvider = ({children}) => {
         setIsLoading(true)
         setRestaurants([])
 
-
-        setTimeout(() => {
+         setTimeout(() => {
          restaurantsRequest(loc)
          .then(restaurantTransfromed)
          .then((results) => {
@@ -29,7 +28,8 @@ export const RestaurantsContextProvider = ({children}) => {
             setError(err)
             setIsLoading(false)
         })
-        } , 2000)
+      } , 2000)
+
     }
     
 
