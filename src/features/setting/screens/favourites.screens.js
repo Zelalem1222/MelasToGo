@@ -12,7 +12,7 @@ import { RestaurantList } from '../../restaurants/components/restaurants-list.st
 
 
 const NoFavouritesArea = styled(SafeArea)`
-     align-items: center,
+     align-items: center
      justify-content: center
 `
 
