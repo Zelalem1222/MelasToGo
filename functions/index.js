@@ -17,6 +17,6 @@ exports.geocode = onRequest((request, response) => {
     geocodeRequest(request , response);
 });
 
-exports.placesNearBy = onRequest((request, response) => {
-    placesRequest(request , response);
-});
+// exports.placesNearBy = onRequest((request, response) => {
+//     placesRequest(request , response);
+// });
