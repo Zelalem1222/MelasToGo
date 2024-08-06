@@ -10,12 +10,14 @@ import { SettingsNavigator } from './settings.navigator';
 import { RestaurantsNavigator } from './restaurants.navigation';
 import { Ionicons } from '@expo/vector-icons'; 
 
+import { CheckoutScreen } from '../../features/checkout/screens/checkout.screen'
 import { MapScreen } from '../../features/map/screens/map.screen';
 import {colors } from '../../infrastructure/theme/colors'
 
 
 const TAB_ICON = {
     Restaurants: 'md-restaurant',
+    Checkout: 'md-cart',
     Map: 'md-map',
     Settings: 'md-settings'
   }
@@ -46,6 +48,7 @@ export const AppNavigator = () => {
         inactiveTintColor: colors.brand.muted,}}
        >
          <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
+         <Tab.Screen name='Checkout' component={CheckoutScreen} />
          <Tab.Screen name='Map' component={MapScreen} />
          <Tab.Screen name="Settings" component={SettingsNavigator} />
        </Tab.Navigator>
