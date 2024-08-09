@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RestaurantsContextProvider } from '../../services/restaurants/restaurants.context';
 import { LocationContextProvider } from '../../services/locations/location.context';
 import { FavouriteContextProvider } from '../../services/favourites/favourites.context';
+import { CartContextProvider } from '../../services/cart/cart.context';
 
 import { SettingsNavigator } from './settings.navigator';
 import { RestaurantsNavigator } from './restaurants.navigation';
@@ -41,6 +42,7 @@ export const AppNavigator = () => {
       <FavouriteContextProvider>
       <LocationContextProvider>
       <RestaurantsContextProvider>
+        <CartContextProvider>
        <Tab.Navigator
        screenOptions={createScreenOptions}
        tabBarOptions={{ 
@@ -52,6 +54,7 @@ export const AppNavigator = () => {
          <Tab.Screen name='Map' component={MapScreen} />
          <Tab.Screen name="Settings" component={SettingsNavigator} />
        </Tab.Navigator>
+       </CartContextProvider>
        </RestaurantsContextProvider>
        </LocationContextProvider>
     </FavouriteContextProvider>
