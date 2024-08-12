@@ -1,5 +1,6 @@
 import styled from "styled-components/native"
-import { Avatar } from "react-native-paper"
+import { Avatar, TextInput , Button } from "react-native-paper"
+import { colors } from "../../../infrastructure/theme/colors"
 
 
 export const CartIconContainer = styled.View`
@@ -11,4 +12,28 @@ export const CartIcon = styled(Avatar.Icon).attrs({
     size: 128
 })`
 background-color: ${props => props.bg || props.theme.colors.brand.primary}
+`
+
+export const NameInput = styled(TextInput)`
+   margin: ${props => props.theme.space[2]}
+`
+
+export const PayButton = styled(Button).attrs({
+     mode: "contained"
+})`
+    width: 80%
+    background-color: ${props => props.bg || props.theme.colors.brand.primary}
+    border-radius: 0
+    align-self: center
+    padding: ${props => props.theme.space[1]}
+`
+
+export const ClearButton = styled(Button).attrs({
+     mode: "contained"
+})`
+    width: 80%
+    background-color: ${props => props.bg || props.theme.colors.ui.error}
+    border-radius: 0
+    align-self: center
+    padding: ${props => props.theme.space[1]}
 `
