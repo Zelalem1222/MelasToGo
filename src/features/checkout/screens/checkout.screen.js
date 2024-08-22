@@ -10,20 +10,33 @@ import { Spacer } from "../../../components/spacer/spacer.component.js"
 import { CreditCardInputs } from "../components/credit-card.component";
 import { payRequest } from "../../../services/checkout/checkout.service.js";
 
-import { CartIconContainer , CartIcon , NameInput , PayButton , ClearButton } from "../components/checkout.styles.js"
+import { CartIconContainer , CartIcon , NameInput , PayButton , ClearButton , PaymentProceessing } from "../components/checkout.styles.js"
 import { RestaurantInfoCard } from "../../restaurants/components/restaurants-info-card.components.js"
 
-export const CheckoutScreen = () => {
+export const CheckoutScreen = ({navigation}) => {
     const { cart , restaurant , clearCart , sum } = useContext(CartContext);
     const [name , setName] = useState("")
     const [card , setCard] = useState(null)
+    const [isLoading , setIsLoading] = useState(false)
 
     const onPay = () => {
+        setIsLoading(true);
         if(!card || !card.id){
-            console.log("some error")
+            setIsLoading(false)
+            navigation.navigate("CheckoutError" , {error: "Please Fill in a valid credit card"})
             return 
         }
         payRequest(card.id, sum , name)
+        .then((res) => {
+            setIsLoading(false);
+            clearCart()
+            setName("")
+            navigation.navigate("CheckoutSuccess")
+        }).catch((err) => {
+            setIsLoading(false);
+            navigation.navigate("CheckoutError" , {error: err})
+        })
+
     }
 
     if(!cart.length && !restaurant){
@@ -42,6 +55,7 @@ export const CheckoutScreen = () => {
 return (
 <SafeArea>
     <RestaurantInfoCard restaurant={restaurant} />
+    {isLoading && <PaymentProceessing />}
     <ScrollView>
         <Spacer position="left" size="medium">
             <Spacer position="top" size="large"><Text>Your Order</Text></Spacer>
@@ -61,7 +75,11 @@ return (
     
     <NameInput label="name" value={name} onChangeText={(t) => setName(t)}/>
     <Spacer position="top" size="large">
-    {name.length > 0 && <CreditCardInputs onSuccess={setCard}/> }
+    {name.length > 0 &&
+     <CreditCardInputs 
+     onSuccess={setCard} 
+     onError={() => navigation.navigate("CheckoutError" , {error: "Something went wrong processing your credit card"})}
+    /> }
     </Spacer>
     <Spacer position="top" size="xxl" />
 
