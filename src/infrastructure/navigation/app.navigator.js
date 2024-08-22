@@ -9,6 +9,7 @@ import { CartContextProvider } from '../../services/cart/cart.context';
 
 import { SettingsNavigator } from './settings.navigator';
 import { RestaurantsNavigator } from './restaurants.navigation';
+import { CheckoutNavigator} from './checkout.navigator'
 import { Ionicons } from '@expo/vector-icons'; 
 
 import { CheckoutScreen } from '../../features/checkout/screens/checkout.screen'
@@ -50,7 +51,7 @@ export const AppNavigator = () => {
         inactiveTintColor: colors.brand.muted,}}
        >
          <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-         <Tab.Screen name='Checkout' component={CheckoutScreen} />
+         <Tab.Screen name='Checkout' component={CheckoutNavigator} />
          <Tab.Screen name='Map' component={MapScreen} />
          <Tab.Screen name="Settings" component={SettingsNavigator} />
        </Tab.Navigator>
