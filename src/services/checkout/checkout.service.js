@@ -6,5 +6,16 @@ const stripe = createStripe("pk_test_51PkhB4Iw1DuEY1gZnjV6SxAjOHGbwqz1R6ICUMPkcq
 export const creatTokenRequest = (card) => stripe.createToken({card})
 
 export const payRequest = (token , sum , name) => {
-    console.log(`${token} , ${name} , ${sum/100}`)
+    return new Promise((resolve, reject) => {
+        // Mocking the payment process
+        setTimeout(() => {
+            const paymentResult = {
+                success: true,
+                message: "Payment successful",
+                transactionId: {token},
+            };
+            resolve(paymentResult);
+            reject("Payment failed");
+        }, 2000);
+    });
 }
